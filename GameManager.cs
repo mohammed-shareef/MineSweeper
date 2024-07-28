@@ -31,21 +31,28 @@ namespace MineSweeper
 
             while (true)
             {
-                string input = Console.ReadLine()?.ToUpper();
-
-                if (input == "Q")
-                    break;
-
-                Direction direction = input.ToDirection();
-
-                GameState state = _game.Play(direction);
-                DisplayGameState(state);
-
-                if (state.Status != GameStatus.InProgress)
+                try
                 {
-                    Console.WriteLine(state.Status == GameStatus.UserWon ? "You win !!" : "You lost...");
-                    Console.WriteLine("Game over !");
-                    break;
+                    string input = Console.ReadLine()?.ToUpper();
+
+                    if (input == "Q")
+                        break;
+
+                    Direction direction = input.ToDirection();
+
+                    GameState state = _game.Play(direction);
+                    DisplayGameState(state);
+
+                    if (state.Status != GameStatus.InProgress)
+                    {
+                        Console.WriteLine(state.Status == GameStatus.UserWon ? "You win !!" : "You lost...");
+                        Console.WriteLine("Game over !");
+                        break;
+                    }
+                }
+                catch (InvalidDataException e)
+                {
+                    Console.WriteLine(e.Message);
                 }
             }
         }

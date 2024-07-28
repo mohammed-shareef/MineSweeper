@@ -28,6 +28,8 @@ namespace MineSweeper
                 case 'R':
                     direction = Direction.Right;
                     break;
+                default:
+                    throw new InvalidDataException("Invalid input. Please enter u, d, l, or r.");
             }
 
             return direction;

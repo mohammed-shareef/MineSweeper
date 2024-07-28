@@ -21,6 +21,7 @@ namespace MineSweeper
         public Game(int boardSize, int mineCount, int lives)
         {
             _lives = lives;
+            _boardSize = boardSize;
             _playerPosition = Point.Empty;
             _moves = 0;
             _board = new GameBoard(boardSize, mineCount);
