@@ -16,7 +16,7 @@ namespace MineSweeper
 
         public GameManager(int boardSize, int mineCount, int lives)
         {
-            _game = new Game(boardSize, mineCount,lives);
+            _game = new Game(boardSize, mineCount, lives);
         }
 
         public void Run()
@@ -29,6 +29,32 @@ namespace MineSweeper
             Console.WriteLine();
             Console.WriteLine("******************************************************");
 
+            while (true)
+            {
+                string input = Console.ReadLine()?.ToUpper();
+
+                if (input == "Q")
+                    break;
+
+                Direction direction = input.ToDirection();
+
+                GameState state = _game.Play(direction);
+                DisplayGameState(state);
+
+                if (state.Status != GameStatus.InProgress)
+                {
+                    Console.WriteLine(state.Status == GameStatus.UserWon ? "You win !!" : "You lost...");
+                    Console.WriteLine("Game over !");
+                    break;
+                }
+            }
+        }
+
+        private void DisplayGameState(GameState state)
+        {
+            Console.WriteLine($"Point: {(char)('A' + state.PlayerPosition.Y)}{state.PlayerPosition.X + 1}");
+            Console.WriteLine($"Lives: {state.Lives}");
+            Console.WriteLine($"Moves: {state.Moves}");
         }
     }
 }
