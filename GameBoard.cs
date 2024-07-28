@@ -11,7 +11,7 @@ namespace MineSweeper
     /// The GameBoard is based on the chess board terminology eg: C2 where
     /// x-axis is represented by alphabets & y-axis is represented by numbers
     /// </summary>
-    public class GameBoard
+    public class GameBoard : IGameBoard 
     {
         private readonly bool[,] _mines;
 

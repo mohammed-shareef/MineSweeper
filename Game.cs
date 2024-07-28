@@ -13,18 +13,18 @@ namespace MineSweeper
     public class Game
     {
         private readonly int _boardSize;
-        private readonly GameBoard _board;
+        private readonly IGameBoard _board;
         private Point _playerPosition;
         private int _lives;
         private int _moves;
 
-        public Game(int boardSize, int mineCount, int lives)
+        public Game(int boardSize, int mineCount, int lives,IGameBoard board)
         {
             _lives = lives;
             _boardSize = boardSize;
             _playerPosition = Point.Empty;
             _moves = 0;
-            _board = new GameBoard(boardSize, mineCount);
+            _board = board;
         }
 
         public GameState Play(Direction direction)
