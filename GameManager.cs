@@ -14,9 +14,9 @@ namespace MineSweeper
     {
         private readonly Game _game;
 
-        public GameManager(int boardSize, int mineCount)
+        public GameManager(int boardSize, int mineCount, int lives)
         {
-            _game = new Game(boardSize, mineCount);
+            _game = new Game(boardSize, mineCount,lives);
         }
 
         public void Run()

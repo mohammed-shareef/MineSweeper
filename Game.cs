@@ -13,10 +13,12 @@ namespace MineSweeper
     public class Game
     {
         private readonly GameBoard _board;
+        private readonly int _lives;
 
-        public Game(int boardSize, int mineCount)
+        public Game(int boardSize, int mineCount, int lives)
         {
             _board = new GameBoard(boardSize, mineCount);
+            _lives = lives;
         }
     }
 }
