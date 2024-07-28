@@ -42,6 +42,37 @@ namespace MineSweeper
         }
 
         /// <summary>
+        /// Move's a player on the board
+        /// </summary>
+        /// <param name="current">The current position of the player</param>
+        /// <param name="direction">The direction the player intends to move</param>
+        /// <returns>The new posiiton of the player after the move</returns>
+        public Point Move(Point current, Direction direction)
+        {
+            int newX = current.X;
+            int newY = current.Y;
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    newY = Math.Max(0, current.Y - 1);
+                    break;
+                case Direction.Down:
+                    newY = Math.Min(_mines.GetLength(1) - 1, current.Y + 1);
+                    break;
+                case Direction.Left:
+                    newX = Math.Max(0, current.X - 1);
+                    break;
+                case Direction.Right:
+                    newX = Math.Min(_mines.GetLength(0) - 1, current.X + 1);
+                    break;
+            }
+
+            return new Point(newX, newY);
+        }
+
+
+        /// <summary>
         /// Check if a mine exists at the current location 
         /// </summary>
         /// <param name="position"></param>
