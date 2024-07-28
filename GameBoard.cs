@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,16 @@ namespace MineSweeper
                     placedMines++;
                 }
             }
+        }
+
+        /// <summary>
+        /// Check if a mine exists at the current location 
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public bool IsMine(Point position)
+        {
+            return _mines[position.X, position.Y];
         }
     }
 }
